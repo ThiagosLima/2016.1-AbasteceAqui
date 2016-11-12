@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
 
 		end
 
+		# comentário
+
 		return average_of_fuel
 	end
 
