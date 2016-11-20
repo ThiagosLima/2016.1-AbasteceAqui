@@ -1,21 +1,21 @@
 //= require map_routes
-let routeCoords = [];
-let routeCities = new Set();
-let countGeocodeAdress = 0;
-let states;
-let counties;
-let researches;
-let fuels;
-let canPutMarks = false;
-let overQuerry = false;
-let countOverQuery = 0;
-let count = 0;
-let countGeocoder = 0;
-let allCitiesFound = false;
-let chosenFuel = 2; // default option
-let fuelsPosition = [];
-let mediumResalePriceRoute = 0;
-let fuelType = [
+var routeCoords = [];
+var routeCities = new Set();
+var countGeocodeAdress = 0;
+var states;
+var counties;
+var researches;
+var fuels;
+var canPutMarks = false;
+var overQuerry = false;
+var countOverQuery = 0;
+var count = 0;
+var countGeocoder = 0;
+var allCitiesFound = false;
+var chosenFuel = 2; // default option
+var fuelsPosition = [];
+var mediumResalePriceRoute = 0;
+var fuelType = [
   "Etanol Hidratado",
   "Gasolina Comum",
   "GLP",
@@ -23,13 +23,13 @@ let fuelType = [
   "Óleo Diesel",
   "Óleo Diesel S10"
 ];
-let whatMarkPut = [];
+var whatMarkPut = [];
 
-let defaultTime = 0;
-let loadingAnimation;
-let dataBaseLodaded = false;
-let stepDisplay;
-let countPutMarks = 0;
+var defaultTime = 0;
+var loadingAnimation;
+var dataBaseLodaded = false;
+var stepDisplay;
+var countPutMarks = 0;
 
 // initialize the map
 function initMap() {
@@ -92,7 +92,7 @@ $(document).ready(function() {
 function putMarks(geocoder, map) {
   var totalTimeMarks = 0;
   const cities = Array.from(routeCities);
-  let defaultTimePutMarks = 2700;
+  var defaultTimePutMarks = 2700;
   var incressedTime = 0;
   for (var i = 0; i < cities.length; i++) {
 
@@ -155,9 +155,9 @@ function geocodeAddress(geocoder, map, address) {
 
 function attachInstructionText(map, marker,fuel, address, isBlue) {
 
-  let text;
-  let textNextCity="";
-  let textDisplay;
+  var text;
+  var textNextCity="";
+  var textDisplay;
   var red,green;
   red = "#f82929";
   green = "#36c81e";
@@ -260,7 +260,7 @@ function geocodeLatLng(geocoder, map, latlng) {
           if (address_components[i].types[0] === "locality" ||
               address_components[i].types[0] === "administrative_area_level_2") {
 
-            let city = address_components[i].long_name;
+            var city = address_components[i].long_name;
 
             for (var j = 0; j < address_components.length; j++) {
 
@@ -316,7 +316,7 @@ function findCitiesOfRoute(geocoder, map, routeCoords) {
   // 5% of routecoords lenght rounded down
   // const adder = Math.floor(routeCoords.length * 0.01);
   defaultTime = 1500;
-  let totalTime = 0;
+  var totalTime = 0;
   var incressedTime = 0;
 
 	for (var i = 0; i < routeCoords.length; i++) {
@@ -364,7 +364,7 @@ function loadData() {
 function compareData(geocoder, map) {
 
   const routeCitiesArray = Array.from(routeCities);
-  let countFuelsPositionValid = 0;
+  var countFuelsPositionValid = 0;
   var i = 0;
 
   for (var i = 0; i < routeCitiesArray.length; i++) {
@@ -381,7 +381,7 @@ function compareData(geocoder, map) {
     stateName = removeDiacritics(stateName);
     cityName = removeDiacritics(cityName);
 
-    let stateID = -1;
+    var stateID = -1;
 
     for (var state_count = 0; state_count < states.length; state_count++) {
 
@@ -391,7 +391,7 @@ function compareData(geocoder, map) {
       }
     }
 
-    let countyID = -1;
+    var countyID = -1;
 
     for (var county_count = 0; county_count < counties.length; county_count++) {
       if (counties[county_count].name === cityName && counties[county_count].state_id === stateID) {
@@ -401,7 +401,7 @@ function compareData(geocoder, map) {
       }
     }
 
-    let researchID = -1;
+    var researchID = -1;
 
     for (var research_count = 0; research_count < researches.length; research_count++) {
       if (researches[research_count].county_id === countyID) {
